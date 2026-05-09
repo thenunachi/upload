@@ -10,16 +10,19 @@ from typing import Optional
 
 from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse, StreamingResponse
+from fastapi.responses import FileResponse, StreamingResponse, HTMLResponse
+from fastapi.staticfiles import StaticFiles
 from PIL import Image, ImageEnhance, ExifTags
 from pydantic import BaseModel
 
-UPLOAD_DIR = Path("uploads")
-THUMB_DIR = UPLOAD_DIR / "thumbnails"
-UPLOAD_DIR.mkdir(exist_ok=True)
-THUMB_DIR.mkdir(exist_ok=True)
+import os
 
-DB_PATH = "photos.db"
+UPLOAD_DIR = Path(os.environ.get("UPLOAD_DIR", "uploads"))
+THUMB_DIR = UPLOAD_DIR / "thumbnails"
+UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
+THUMB_DIR.mkdir(parents=True, exist_ok=True)
+
+DB_PATH = os.environ.get("DB_PATH", "photos.db")
 ALLOWED_TYPES = {"image/jpeg", "image/png", "image/gif", "image/webp", "image/bmp", "image/tiff"}
 MAX_SIZE_MB = 50
 
@@ -906,3 +909,14 @@ def download_zip(body: PhotoIds):
         media_type="application/zip",
         headers={"Content-Disposition": "attachment; filename=photos.zip"},
     )
+
+
+# ── Serve React frontend (production) ─────────────────────────────────────────
+
+_frontend = Path(__file__).parent.parent / "frontend" / "dist"
+if _frontend.exists():
+    app.mount("/assets", StaticFiles(directory=_frontend / "assets"), name="assets")
+
+    @app.get("/{full_path:path}")
+    def serve_frontend(full_path: str):
+        return HTMLResponse((_frontend / "index.html").read_text())
