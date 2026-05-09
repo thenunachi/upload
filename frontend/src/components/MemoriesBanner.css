@@ -1,0 +1,43 @@
+.mem-banner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 20px 12px;
+  padding: 12px 14px;
+  background: color-mix(in srgb, #833AB4 12%, var(--surface));
+  border: 1px solid color-mix(in srgb, #833AB4 30%, transparent);
+  border-radius: 10px;
+  cursor: pointer;
+  position: relative;
+  transition: background 0.15s;
+  animation: mem-in 0.35s ease;
+}
+.mem-banner:hover { background: color-mix(in srgb, #833AB4 18%, var(--surface)); }
+
+@keyframes mem-in {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.mem-thumbs { display: flex; gap: 3px; flex-shrink: 0; }
+
+.mem-thumb {
+  width: 40px; height: 40px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.mem-text { display: flex; flex-direction: column; gap: 2px; flex: 1; }
+
+.mem-title { font-size: 0.88rem; font-weight: 700; color: var(--text); }
+.mem-sub   { font-size: 0.78rem; color: var(--text-2); }
+
+.mem-close {
+  position: absolute; top: 8px; right: 10px;
+  background: none; border: none;
+  color: var(--text-2); cursor: pointer;
+  font-size: 0.82rem; padding: 2px 4px;
+  transition: color 0.15s;
+}
+.mem-close:hover { color: var(--text); }

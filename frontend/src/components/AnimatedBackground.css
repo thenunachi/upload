@@ -1,0 +1,106 @@
+/* ── SVG orb layer ── */
+.anim-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.ab-orbs     { opacity: 0.13; transition: opacity 0.4s; }
+.ab-particles { opacity: 0.9;  transition: opacity 0.4s; }
+
+[data-theme="dim"]   .ab-orbs      { opacity: 0.17; }
+[data-theme="light"] .ab-orbs      { opacity: 0.07; }
+[data-theme="light"] .ab-particles { opacity: 0.45; }
+
+/* ── Emoji layer ── */
+.emoji-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 2;          /* above gallery, below navbar (200) & modals (1000+) */
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Base emoji element */
+.fe {
+  position: absolute;
+  line-height: 1;
+  user-select: none;
+  will-change: transform;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.35));
+}
+
+/* ── Keyframes ── */
+
+/* Left → Right */
+@keyframes fe-lr {
+  0%   { transform: translateX(0);                  opacity: 0; }
+  6%   { opacity: 0.9; }
+  94%  { opacity: 0.9; }
+  100% { transform: translateX(calc(100vw + 120px)); opacity: 0; }
+}
+
+/* Right → Left */
+@keyframes fe-rl {
+  0%   { transform: translateX(0);                   opacity: 0; }
+  6%   { opacity: 0.9; }
+  94%  { opacity: 0.9; }
+  100% { transform: translateX(calc(-100vw - 120px)); opacity: 0; }
+}
+
+/* Float Up */
+@keyframes fe-up {
+  0%   { transform: translateY(0);                   opacity: 0; }
+  10%  { opacity: 0.9; }
+  90%  { opacity: 0.9; }
+  100% { transform: translateY(calc(-100vh - 120px)); opacity: 0; }
+}
+
+/* Zigzag Left → Right (bee/unicorn) */
+@keyframes fe-zz {
+  0%   { transform: translateX(0)                translateY(0px);  opacity: 0; }
+  5%   { opacity: 0.9; }
+  12%  { transform: translateX(calc(12vw))       translateY(-28px); }
+  25%  { transform: translateX(calc(25vw))       translateY( 28px); }
+  37%  { transform: translateX(calc(37vw))       translateY(-28px); }
+  50%  { transform: translateX(calc(50vw))       translateY( 28px); }
+  62%  { transform: translateX(calc(62vw))       translateY(-28px); }
+  75%  { transform: translateX(calc(75vw))       translateY( 28px); }
+  88%  { transform: translateX(calc(88vw))       translateY(-28px); opacity: 0.9; }
+  100% { transform: translateX(calc(100vw + 120px)) translateY(0px); opacity: 0; }
+}
+
+/* Spin inner */
+@keyframes e-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Wobble inner */
+@keyframes e-wobble {
+  0%,100% { transform: rotate(-12deg) scaleX(1);   }
+  25%     { transform: rotate(0deg)   scaleX(1.1); }
+  50%     { transform: rotate(12deg)  scaleX(1);   }
+  75%     { transform: rotate(0deg)   scaleX(0.9); }
+}
+
+/* Apply flight animations */
+.fe-lr { animation: fe-lr linear infinite; }
+.fe-rl { animation: fe-rl linear infinite; }
+.fe-up { animation: fe-up linear infinite; }
+.fe-zz { animation: fe-zz linear infinite; }
+
+/* Inner motion */
+.e-spin {
+  display: inline-block;
+  animation: e-spin 2.4s linear infinite;
+}
+.e-wobble {
+  display: inline-block;
+  animation: e-wobble 0.7s ease-in-out infinite;
+}
+
+/* Light theme — make emojis slightly transparent so they're not overwhelming */
+[data-theme="light"] .emoji-layer { opacity: 0.65; }

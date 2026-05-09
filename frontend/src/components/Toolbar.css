@@ -1,0 +1,101 @@
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: color-mix(in srgb, var(--surface) 85%, transparent);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+  position: sticky;
+  top: 60px;
+  z-index: 150;
+}
+
+.tb-album-crumb {
+  padding: 6px 12px;
+  background: rgba(0,149,246,0.12);
+  border: 1px solid var(--accent);
+  border-radius: 20px;
+  color: var(--accent);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+.tb-album-crumb:hover { background: rgba(0,149,246,0.2); }
+
+.tb-search {
+  flex: 1;
+  min-width: 140px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0 10px;
+  color: var(--text-2);
+  transition: border-color 0.15s;
+}
+.tb-search:focus-within { border-color: var(--accent); }
+
+.tb-search-input {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--text);
+  font-size: 0.85rem;
+  font-family: inherit;
+  padding: 7px 0;
+}
+.tb-search-input::placeholder { color: var(--text-2); }
+
+.tb-clear {
+  background: none;
+  border: none;
+  color: var(--text-2);
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+  padding: 0;
+  transition: color 0.15s;
+}
+.tb-clear:hover { color: var(--text); }
+
+.tb-sort {
+  padding: 7px 10px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 0.82rem;
+  font-family: inherit;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.15s;
+}
+.tb-sort:focus { border-color: var(--accent); }
+
+.tb-btn {
+  padding: 7px 12px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-2);
+  font-size: 0.82rem;
+  font-family: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.tb-btn:hover { background: var(--border); color: var(--text); }
+.tb-btn.active {
+  background: rgba(0,149,246,0.12);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.tb-btn-warn { color: var(--danger) !important; border-color: var(--danger) !important; }

@@ -1,0 +1,81 @@
+.potd {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 16px 20px;
+  padding: 14px;
+  background: color-mix(in srgb, var(--surface) 70%, transparent);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  backdrop-filter: blur(12px);
+  position: relative;
+  animation: potd-in 0.4s ease;
+}
+
+@keyframes potd-in {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.potd-img-wrap {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.potd-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.potd-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.18s;
+  font-size: 0.7rem;
+  color: #fff;
+  font-weight: 600;
+  text-align: center;
+}
+.potd-img-wrap:hover .potd-overlay { opacity: 1; }
+
+.potd-info { display: flex; flex-direction: column; gap: 4px; flex: 1; min-width: 0; }
+
+.potd-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.potd-name {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.potd-date { font-size: 0.78rem; color: var(--text-2); }
+
+.potd-close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: var(--text-2);
+  cursor: pointer;
+  font-size: 0.85rem;
+  padding: 2px 4px;
+  transition: color 0.15s;
+}
+.potd-close:hover { color: var(--text); }

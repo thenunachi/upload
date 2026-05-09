@@ -1,0 +1,101 @@
+.ba-root {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  user-select: none;
+}
+
+.ba-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.ba-before {
+  position: relative;
+  z-index: 1;
+}
+
+.ba-after-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  transition: clip-path 0.01s;
+}
+
+.ba-after {
+  position: absolute;
+  inset: 0;
+}
+
+/* Divider line */
+.ba-divider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 3;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+}
+
+.ba-divider::before {
+  content: '';
+  flex: 1;
+  width: 2px;
+  background: rgba(255,255,255,0.85);
+  box-shadow: 0 0 8px rgba(0,0,0,0.4);
+}
+
+/* Draggable knob */
+.ba-handle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: ew-resize;
+  pointer-events: all;
+  flex-shrink: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.ba-handle:hover,
+.ba-handle:active {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.ba-handle svg { pointer-events: none; }
+
+/* Labels */
+.ba-label {
+  position: absolute;
+  bottom: 12px;
+  padding: 3px 10px;
+  background: rgba(0,0,0,0.55);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  pointer-events: none;
+  z-index: 4;
+  backdrop-filter: blur(4px);
+}
+
+.ba-label-l { left: 12px; }
+.ba-label-r { right: 12px; }

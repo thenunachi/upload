@@ -1,0 +1,121 @@
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: var(--modal-scrim);
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  color: var(--text-2);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  transition: color 0.15s;
+  flex-shrink: 0;
+}
+.modal-close:hover { color: var(--text); }
+
+.share-modal {
+  background: var(--surface);
+  border: 1px solid var(--border-2);
+  border-radius: 12px;
+  width: min(92vw, 420px);
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+}
+
+.share-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border);
+}
+.share-header h3 { font-size: 1rem; font-weight: 700; color: var(--text); }
+
+.share-body {
+  padding: 24px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.share-thumb {
+  width: 88px; height: 88px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+}
+
+.share-name { font-size: 0.85rem; color: var(--text-2); text-align: center; word-break: break-all; }
+
+.btn-share-gen {
+  width: 100%;
+  padding: 10px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.btn-share-gen:hover:not(:disabled) { background: var(--accent-h); }
+.btn-share-gen:disabled { opacity: 0.5; cursor: default; }
+
+.share-link-row { display: flex; gap: 8px; width: 100%; }
+
+.share-link-input {
+  flex: 1;
+  padding: 9px 12px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-2);
+  font-size: 0.78rem;
+  font-family: monospace;
+  min-width: 0;
+  outline: none;
+}
+
+.btn-copy {
+  padding: 9px 14px;
+  background: none;
+  border: 1px solid var(--border-2);
+  border-radius: 8px;
+  color: var(--accent);
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 600;
+  font-family: inherit;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+.btn-copy:hover { background: var(--surface-2); }
+.btn-copy.copied { color: #3db56e; border-color: #2a5a3a; }
+
+.share-note { font-size: 0.78rem; color: var(--text-2); text-align: center; }
+
+.btn-revoke {
+  padding: 7px 14px;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-2);
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-family: inherit;
+  transition: color 0.15s, border-color 0.15s;
+}
+.btn-revoke:hover:not(:disabled) { color: var(--danger); border-color: var(--danger); }
+.btn-revoke:disabled { opacity: 0.4; cursor: default; }

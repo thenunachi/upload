@@ -1,0 +1,19 @@
+.stats {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.stat {
+  font-size: 0.85rem;
+  color: #888;
+}
+
+.stat strong {
+  color: #ccc;
+  font-weight: 600;
+}
+
+.stat-size {
+  color: #666;
+}

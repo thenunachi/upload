@@ -1,0 +1,55 @@
+.upload-zone {
+  border: 1px dashed var(--border-2);
+  border-radius: 4px;
+  padding: 28px 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  margin: 16px 0;
+  background: var(--surface-2);
+  user-select: none;
+}
+
+.upload-zone:hover { border-color: var(--text-2); }
+.upload-zone.dragging { border-color: var(--accent); background: rgba(0,149,246,0.04); }
+.upload-zone.uploading { cursor: default; pointer-events: none; border-color: var(--accent); }
+
+.upload-idle { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+
+.upload-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+.upload-icon svg { opacity: 0.75; }
+.upload-zone.dragging .upload-icon svg { opacity: 1; }
+
+.upload-title { font-size: 0.95rem; font-weight: 600; color: var(--text); }
+.upload-sub { font-size: 0.8rem; color: var(--text-2); }
+
+.upload-progress { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.upload-progress p { font-size: 0.85rem; color: var(--text-2); }
+
+.spinner {
+  width: 28px; height: 28px;
+  border: 2px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.progress-bar {
+  width: 200px; height: 2px;
+  background: var(--border);
+  border-radius: 1px;
+  overflow: hidden;
+}
+.progress-fill { height: 100%; background: var(--accent); transition: width 0.3s ease; }
+.progress-pct { font-size: 0.8rem; color: var(--accent); font-weight: 600; }

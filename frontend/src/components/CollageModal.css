@@ -1,0 +1,153 @@
+.collage-modal {
+  display: flex;
+  flex-direction: column;
+  width: min(95vw, 540px);
+  max-height: 90vh;
+  background: var(--surface);
+  border: 1px solid var(--border-2);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.45);
+}
+
+.collage-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.collage-header h3 { font-size: 1rem; font-weight: 700; color: var(--text); }
+
+/* Selected strip */
+.collage-selected {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.collage-selected-label {
+  font-size: 0.78rem;
+  color: var(--text-2);
+  display: block;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.collage-slots { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.collage-slot {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--surface-2);
+}
+
+.collage-slot img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.collage-slot-remove {
+  position: absolute;
+  top: 3px; right: 3px;
+  width: 18px; height: 18px;
+  background: rgba(0,0,0,0.65);
+  border: none; border-radius: 50%;
+  color: #fff; font-size: 0.75rem;
+  cursor: pointer; display: flex;
+  align-items: center; justify-content: center;
+  line-height: 1;
+}
+
+.collage-slot-add {
+  border: 1px dashed var(--border-2);
+  border-radius: 8px;
+  color: var(--accent);
+  background: none;
+  font-size: 0.82rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.collage-slot-add:hover { background: rgba(0,149,246,0.07); }
+
+/* Photo picker */
+.collage-picker {
+  padding: 12px 18px;
+  border-bottom: 1px solid var(--border);
+  max-height: 180px;
+  overflow-y: auto;
+  flex-shrink: 0;
+}
+
+.collage-picker-hint { font-size: 0.78rem; color: var(--text-2); margin-bottom: 8px; }
+
+.collage-picker-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(56px, 1fr));
+  gap: 4px;
+}
+
+.collage-pick-item {
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.15s;
+}
+.collage-pick-item:hover { opacity: 0.8; transform: scale(0.96); }
+.collage-pick-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* Layouts */
+.collage-layouts {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.collage-layout-row { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+
+.collage-layout-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 12px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.72rem;
+  color: var(--text-2);
+  font-family: inherit;
+  transition: border-color 0.15s, color 0.15s;
+}
+.collage-layout-btn:hover { border-color: var(--text-2); color: var(--text); }
+.collage-layout-btn.active { border-color: var(--accent); color: var(--accent); }
+
+.li { width: 36px; fill: currentColor; }
+
+/* Options */
+.collage-options {
+  padding: 12px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.collage-opt {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.collage-opt .ctrl-label { min-width: 80px; font-size: 0.75rem; }
+.collage-opt input[type="range"] { flex: 1; }
+.collage-opt .slider-val { font-size: 0.75rem; color: var(--text-2); min-width: 32px; }
+
+.collage-bgs { display: flex; gap: 5px; align-items: center; }
